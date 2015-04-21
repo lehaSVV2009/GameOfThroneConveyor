@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Game of thrones conveyor</title>
+</head>
+<body>
+	<div>
+		<input type="submit" value="Start" onclick="start()" />
+	</div>
+    <h2>They want power or vengeance:</h2>
+    <div id="wish"></div>
+
+    <h2>They are popular now:</h2>
+    <div id="fans"></div>
+
+    <h2>They are involved in conflict:</h2>
+    <div id="conflict"></div>
+
+    <h2>They have died:</h2>
+    <div id="killed"></div>
+
+    <div id="messages"></div>
+    <script type="text/javascript">
+        var webSocket =
+			new WebSocket('ws://localhost:8000/conveyor-1.0.0/websocket');
+
+		webSocket.onerror = function(event) {
+			onError(event)
+		};
+
+		webSocket.onopen = function(event) {
+			onOpen(event)
+		};
+
+		webSocket.onmessage = function(event) {
+			onMessage(event)
+		};
+
+        function updateDivs (person) {
+            var personDiv = document.getElementById(person.id);
+            if (!personDiv) {
+                personDiv = document.createElement('div');
+                personDiv.setAttribute('id', person.id);
+            }
+            personDiv.innerHTML = "<i>" + person.description + "</i>";
+            var stageDiv = document.getElementById(person.stage);
+            stageDiv.appendChild(personDiv);
+        }
+
+        function parseData (data) {
+            var personData = data.split("/");
+            if (personData.length === 3) {
+                var person = {
+                    stage : personData[0],
+                    id : personData[1],
+                    description : personData[2]
+                };
+                updateDivs(person)
+            }
+        }
+
+        function onMessage(event) {
+            parseData(event.data);
+		}
+
+		function onOpen(event) {
+			document.getElementById('messages').innerHTML 
+				= 'Connection established';
+		}
+
+		function onError(event) {
+			alert(event.data);
+		}
+
+		function start() {
+			webSocket.send('hello');
+			return false;
+		}
+
+	</script>
+</body>
+</html>
