@@ -11,8 +11,10 @@ import java.util.Set;
  */
 public class SessionManager {
 
+    private static final SessionManager instance = new SessionManager();
+
     public static SessionManager getInstance () {
-        return new SessionManager();
+        return instance;
     }
 
     private SessionManager() {}

@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class DumbWayFactory {
 
-    private static final List<String> ways = new ArrayList<String>(){{
+    private static final List<String> waysEn = new ArrayList<String>(){{
         add("was poisoned at his own wedding");
         add("was beheaded");
         add("was brutally killed by The Mountain");
@@ -25,6 +25,24 @@ public class DumbWayFactory {
         add("was killed by gold crone");
         add("was killed in the privy chamber");
         add("was killed and backed to life");
+    }};
+
+    private static final List<String> ways = new ArrayList<String>(){{
+        add("отравлен на собственной свадьбе");
+        add("обезглавлен");
+        add("брутально убит Горой");
+        add("застрелен лучником");
+        add("убит по приказу");
+        add("брошен в лунную дверь");
+        add("застрелен лучниками");
+        add("сожжен драконами");
+        add("сожжен на костре");
+        add("убит, сдерживая ворота от гигантов");
+        add("заперт в погребе");
+        add("убит тенью");
+        add("убит расплавленным золотом");
+        add("застрелен в туалете");
+        add("убит в поединке и возвращен к жизни");
     }};
 
     public static String createWayToDie () {
