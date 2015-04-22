@@ -8,8 +8,8 @@ import com.kadet.conveyor.entity.Personage;
  */
 public class WishMaker extends Machine<Personage> {
 
-    public WishMaker(Container<Personage> fromContainer, Container<Personage> toContainer, int count) {
-        super(fromContainer, toContainer, count);
+    public WishMaker(Container<Personage> fromContainer, Container<Personage> toContainer, Machine<Personage> nextMachine, int count) {
+        super(fromContainer, toContainer, nextMachine, count);
     }
 
     @Override

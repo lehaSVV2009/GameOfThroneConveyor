@@ -43,20 +43,21 @@
                 personDiv = document.createElement('div');
                 personDiv.setAttribute('id', person.id);
             }
-            personDiv.innerHTML = "<i>" + person.description + "</i>";
+            personDiv.innerHTML = "<img src='" + person.imageUrl + "' width='40'></img>&nbsp;&nbsp;<i>" + person.description + "</i>";
             var stageDiv = document.getElementById(person.stage);
             stageDiv.appendChild(personDiv);
         }
 
         function parseData (data) {
-            var personData = data.split("/");
-            if (personData.length === 3) {
+            var personData = data.split("\\");
+            if (personData.length === 4) {
                 var person = {
                     stage : personData[0],
                     id : personData[1],
-                    description : personData[2]
+                    description : personData[2],
+                    imageUrl: personData[3]
                 };
-                updateDivs(person)
+                updateDivs(person);
             }
         }
 

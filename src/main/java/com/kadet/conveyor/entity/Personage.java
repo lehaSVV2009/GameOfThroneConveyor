@@ -8,6 +8,7 @@ public class Personage {
     private String id;
     private String name;
     private String surname;
+    private String imageUrl = "";
 
     private boolean wantPowerOrVengeance;
     private boolean haveFans;
@@ -77,5 +78,13 @@ public class Personage {
 
     public void setKillWay(String killWay) {
         this.killWay = killWay;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String url) {
+        this.imageUrl = url;
     }
 }

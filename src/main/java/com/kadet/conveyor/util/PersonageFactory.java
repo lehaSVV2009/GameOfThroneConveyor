@@ -10,11 +10,12 @@ public class PersonageFactory {
     private static int count = 1;
     private static final String PREFIX = "PERSON_";
 
-    public static Personage createPersonage (String name, String surname) {
+    public static Personage createPersonage (String name, String surname, String image) {
         Personage personage = new Personage();
         personage.setId(PREFIX + count);
         personage.setName(name);
         personage.setSurname(surname);
+        personage.setImageUrl(image);
         ++count;
         return personage;
     }

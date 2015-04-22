@@ -8,8 +8,8 @@ import com.kadet.conveyor.entity.Personage;
  */
 public class FansMaker extends Machine<Personage> {
 
-    public FansMaker(Container<Personage> fromContainer, Container<Personage> toContainer, int count) {
-        super(fromContainer, toContainer, count);
+    public FansMaker(Container<Personage> fromContainer, Container<Personage> toContainer, Machine<Personage> nextMachine) {
+        super(fromContainer, toContainer, nextMachine);
     }
 
     @Override
